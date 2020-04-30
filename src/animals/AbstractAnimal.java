@@ -34,4 +34,12 @@ public abstract class AbstractAnimal {
   public void eatFoood() {
     System.out.println(this.name + " has eaten some food");
   }
+
+  @Override
+  public String toString() {
+    return "Animal{" + " " +
+            "id: " + id + ", " +
+            "name: "  + name + ", " +
+            "yearDiscovered: " + yearDiscovered + " }";
+  }
 }
