@@ -26,6 +26,23 @@ public abstract class AbstractAnimal {
     this.yearDiscovered = yearDiscovered;
   }
 
+  // getters and setters
+  public String getName(){
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public int getYearDiscovered() {
+    return yearDiscovered;
+  }
+
+  public void setYearDiscovered(int yearDiscovered) {
+    this.yearDiscovered = yearDiscovered;
+  }
+
   // abstract methods
   abstract String move();
   abstract String breath();
@@ -42,4 +59,5 @@ public abstract class AbstractAnimal {
             "name: "  + name + ", " +
             "yearDiscovered: " + yearDiscovered + " }";
   }
+
 }

@@ -13,18 +13,22 @@ public class Bird extends AbstractAnimal {
   // getters and setters
 
   // name
+  @Override
   public void setName(String name) {
     this.name = name;
   }
 
+  @Override
   public String getName() {
     return name;
   }
 
+  @Override
   public void setYearDiscovered(int yearDiscovered) {
     this.yearDiscovered = yearDiscovered;
   }
 
+  @Override
   public int getYearDiscovered() {
     return yearDiscovered;
   }

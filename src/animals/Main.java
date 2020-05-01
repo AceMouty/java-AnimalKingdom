@@ -4,6 +4,20 @@ import java.util.*;
 
 public class Main {
 
+  public static ArrayList<AbstractAnimal> filteredList = new ArrayList<AbstractAnimal>();
+  
+  public static void filterList(ArrayList<AbstractAnimal> animals, CheckAnimal tester) {
+    
+    filteredList.clear();
+    for (AbstractAnimal a: animals) {
+      if(tester.filter(a)) {
+        filteredList.add(a);
+      }
+    }
+
+  }
+
+
   public static void main(String[] args) {
     
     // Mamals
@@ -48,6 +62,64 @@ public class Main {
     for (AbstractAnimal a: animalList) {
       System.out.println(a);
     }
-    
+    System.out.println();
+
+    System.out.println("*** List all the animals in descending order by year named ***");
+    animalList.sort((a1, a2) -> a2.getYearDiscovered() - a1.getYearDiscovered());
+    animalList.forEach((a) -> System.out.println(a)); 
+    System.out.println();
+
+    System.out.println("*** List all the animals alphabetically ***");
+    animalList.sort((a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
+    animalList.forEach((a) -> System.out.println(a));
+    System.out.println();
+
+    System.out.println("*** List all the animals order by how they move ***");
+    animalList.sort((a1, a2) -> a1.move().compareToIgnoreCase(a2.move()));
+    animalList.forEach((a) -> System.out.println(a));
+    System.out.println();
+
+    System.out.println("*** List only those animals the breath with lungs ***");
+    filterList(animalList, a -> a.breath() == "lungs");
+    for (int i = 0; i < filteredList.size(); i++) {
+      System.out.println(filteredList.get(i));
+    }
+    System.out.println();
+
+    System.out.println("*** List only those animals that breath with lungs and were named in 1758 ***");
+    filterList(animalList, a -> (a.breath() == "lungs") && (a.getYearDiscovered() == 1758));
+    for (int i = 0; i < filteredList.size(); i++) {
+      System.out.println(filteredList.get(i));
+    }
+    System.out.println();
+
+    System.out.println("*** List only those animals that lay eggs and breath with lungs ***");
+    filterList(animalList, a -> (a.reproduce() == "eggs") && (a.breath() == "lungs"));
+    for (AbstractAnimal a : filteredList) {
+      System.out.println(a);
+    }
+    System.out.println();
+
+    System.out.println("*** List alphabetically only those animals that were named in 1758 ***");
+    filterList(animalList, a -> a.getYearDiscovered() == 1758);
+    filteredList.sort((a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
+    for (int i = 0; i < filteredList.size(); i++) {
+      System.out.println(filteredList.get(i));
+    }
+
+    System.out.println("*** Stretch Goal ***");
+    System.out.println();
+    System.out.println();
+
+    System.out.println("*** For the list of animals, list alphabetically those animals that are mammals ***");
+    filterList(animalList, a -> a instanceof Mamal);
+    filteredList.sort((a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
+    for (int i = 0; i < filteredList.size(); i++) {
+      System.out.println(filteredList.get(i));
+    }
+
+
+
+
   }
 }
